@@ -22,7 +22,7 @@ def main():
             if empresa.registrar_empleado(empleado):
                 print(f"Empleado '{nombre}' registrado correctamente.")
                 if empleado.get_sueldo() != sueldo:
-                    print(f"Aviso: el sueldo fue ajustado al mínimo de ${Empleado.SALARIO_MINIMO:,.0f}")
+                    print(f"Aviso: el sueldo fue ajustado al mínimo de ${Empresa.SALARIO_MINIMO:,.0f}")
             else:
                 print(f"Error: ya existe un empleado con DNI {dni}.")
 
