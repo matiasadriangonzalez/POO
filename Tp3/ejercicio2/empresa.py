@@ -1,5 +1,5 @@
 class Empresa:
-    SALARIO_MINIMO = 360000  # Salario Mínimo Vital y Móvil vigente (actualizar si cambia)
+    SALARIO_MINIMO = 360000  
 
     def __init__(self):
         self.__empleados = []
