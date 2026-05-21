@@ -14,20 +14,20 @@ class Cancha:
 
     def reservar_turno(self, turno):
         for t in self.__turnos:
-            if t.get_hora() == turno.get_hora():
+            if t.get_hora() == turno.get_hora() and t.get_fecha() == turno.get_fecha():
                 return False
         self.__turnos.append(turno)
         return True
 
-    def cancelar_turno(self, hora):
+    def cancelar_turno(self, hora, fecha):
         for t in self.__turnos:
-            if t.get_hora() == hora:
+            if t.get_hora() == hora and t.get_fecha() == fecha:
                 self.__turnos.remove(t)
                 return True
         return False
 
-    def get_turno_por_hora(self, hora):
+    def get_turno_por_hora(self, hora, fecha):
         for t in self.__turnos:
-            if t.get_hora() == hora:
+            if t.get_hora() == hora and t.get_fecha() == fecha:
                 return t
         return None
