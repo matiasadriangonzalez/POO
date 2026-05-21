@@ -1,9 +1,10 @@
+from gestor_canchas import GestorCanchas
 from cancha import Cancha
 from turno import Turno
 
 
-def mostrar_estado(canchas):
-    for cancha in canchas:
+def mostrar_estado(gestor):
+    for cancha in gestor.get_canchas():
         print(f"\n  Cancha {cancha.get_numero()}:")
         for hora in range(Cancha.HORA_APERTURA, Cancha.HORA_CIERRE + 1):
             turno = cancha.get_turno_por_hora(hora)
@@ -13,16 +14,13 @@ def mostrar_estado(canchas):
                 print(f"    {hora:02d}:00 — OCUPADO  ({turno.get_nombre_persona()})")
 
 
-def seleccionar_cancha(canchas):
+def seleccionar_cancha(gestor):
     numero = int(input("Número de cancha (1, 2 o 3): "))
-    for cancha in canchas:
-        if cancha.get_numero() == numero:
-            return cancha
-    return None
+    return gestor.get_cancha_por_numero(numero)
 
 
 def main():
-    canchas = [Cancha(1), Cancha(2), Cancha(3)]
+    gestor = GestorCanchas(3)
 
     while True:
         print("\n=== Complejo Deportivo — Fútbol 5 ===")
@@ -36,10 +34,10 @@ def main():
 
         if opcion == "1":
             print("\n--- Estado actual de las canchas ---")
-            mostrar_estado(canchas)
+            mostrar_estado(gestor)
 
         elif opcion == "2":
-            cancha = seleccionar_cancha(canchas)
+            cancha = seleccionar_cancha(gestor)
             if cancha is None:
                 print("Número de cancha inválido. Ingrese 1, 2 o 3.")
             else:
@@ -55,7 +53,7 @@ def main():
                         print("Error: Turno ocupado.")
 
         elif opcion == "3":
-            cancha = seleccionar_cancha(canchas)
+            cancha = seleccionar_cancha(gestor)
             if cancha is None:
                 print("Número de cancha inválido. Ingrese 1, 2 o 3.")
             else:

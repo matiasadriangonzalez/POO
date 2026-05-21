@@ -4,8 +4,8 @@ from provincia import Provincia
 
 
 def inicializar_datos():
-    america = Continente("América")
-    europa = Continente("Europa")
+    america = Continente("america")
+    europa = Continente("europa")
 
     # ── SUDAMÉRICA ───────────────────────────────────────────────────────────
     argentina = Pais("Argentina", "Buenos Aires", 2780400)
