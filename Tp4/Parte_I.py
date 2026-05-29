@@ -37,6 +37,6 @@ class Auto(Motor):
 # Uso
 auto = Auto("Toyota", "Corolla", 4, "Nafta")
 auto.encender()       # Auto "es" un motor, puede encenderse a sí mismo 
-auto.conducir()
+auto.apagar()
 print(auto.get_info())
 
