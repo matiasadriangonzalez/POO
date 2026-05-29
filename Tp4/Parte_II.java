@@ -1,30 +1,18 @@
-// Superclase
-class Archivo {
-    private String nombre;
-    private double pesoEnMB;
+# Superclase
+class Archivo:
+    def __init__(self, nombre: str, peso_en_mb: float):
+        self.nombre = nombre
+        self.peso_en_mb = peso_en_mb
+        print("Creando Archivo genérico...")
 
-    // Constructor obligatorio con argumentos
-    public Archivo(String nombre, double pesoEnMB) {
-        this.nombre = nombre;
-        this.pesoEnMB = pesoEnMB;
-        System.out.println("Creando Archivo genÃ©rico...");
-    }
-}
+# Subclase
+class ArchivoVideo(Archivo):
+    def __init__(self, nombre: str, peso_en_mb: float):
+        # Llamada obligatoria al constructor de la superclase
+        super().__init__(nombre, peso_en_mb)
+        print("Creando Archivo de Video...")
 
-// Subclase
-class ArchivoVideo extends Archivo {
-    // Constructor de la subclase
-    public ArchivoVideo(String nombre, double pesoEnMB) {
-        // Llamada obligatoria al constructor de la superclase
-        super(nombre, pesoEnMB); 
-        System.out.println("Creando Archivo de Video...");
-    }
-}
-
-// Clase Principal para ejecutar
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("--- Instanciando ArchivoVideo ---");
-        ArchivoVideo video = new ArchivoVideo("pelicula.mp4", 1200.5);
-    }
-}
+# Ejecución del programa
+if __name__ == "__main__":
+    print("--- Instanciando ArchivoVideo ---")
+    video = ArchivoVideo("pelicula.mp4", 1200.5)
