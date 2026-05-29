@@ -4,7 +4,7 @@ class Cancha:
 
     def __init__(self, numero):
         self.__numero = numero
-        self.__turnos = []
+        self.__turnos = [] 
 
     def get_numero(self):
         return self.__numero
