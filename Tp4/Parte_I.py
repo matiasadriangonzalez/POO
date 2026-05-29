@@ -17,7 +17,7 @@ class Motor:
         return f"Motor de {self.cilindros} cilindros, combustible: {self.combustible}"
 
 
-# ❌ ERROR DE DISEÑO: Auto hereda de Motor
+# ERROR DE DISEÑO: Auto hereda de Motor
 class Auto(Motor):
     def __init__(self, marca, modelo, cilindros, combustible):
         super().__init__(cilindros, combustible)
@@ -36,7 +36,7 @@ class Auto(Motor):
 
 # Uso
 auto = Auto("Toyota", "Corolla", 4, "Nafta")
-auto.encender()       # Auto "es" un motor, puede encenderse a sí mismo 💀
+auto.encender()       # Auto "es" un motor, puede encenderse a sí mismo 
 auto.conducir()
 print(auto.get_info())
 
