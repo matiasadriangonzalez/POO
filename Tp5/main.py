@@ -1,7 +1,7 @@
 from punto import Punto
 from rectangulo import Rectangulo
 from elipse import Elipse
-from cuadrado import Cuadrado
+from cuadrado_elementografico import Cuadrado
 from circulo import Circulo
 from lienzo import Lienzo
 
