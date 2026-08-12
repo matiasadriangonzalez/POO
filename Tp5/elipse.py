@@ -6,8 +6,7 @@ from punto import Punto
 
 class Elipse(ElementoGrafico):
 
-    def __init__(self, colorHex: str, posicionCentro: Punto, nombreCapa: str,
-                 radioMayor: float, radioMenor: float):
+    def __init__(self, colorHex: str, posicionCentro: Punto, nombreCapa: str, radioMayor: float, radioMenor: float):
         super().__init__(colorHex, posicionCentro, nombreCapa)
         self._radioMayor = radioMayor
         self._radioMenor = radioMenor

@@ -4,8 +4,7 @@ from punto import Punto
 
 class Rectangulo(ElementoGrafico):
 
-    def __init__(self, colorHex: str, posicionCentro: Punto, nombreCapa: str,
-                 ladoMenor: float, ladoMayor: float):
+    def __init__(self, colorHex: str, posicionCentro: Punto, nombreCapa: str, ladoMenor: float, ladoMayor: float):
         super().__init__(colorHex, posicionCentro, nombreCapa)
         self._ladoMenor = ladoMenor
         self._ladoMayor = ladoMayor
