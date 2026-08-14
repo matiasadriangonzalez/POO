@@ -15,8 +15,8 @@ public class Auto implements ImpactoEcologico {
     private double consumoLitrosPor100km;
     private String tipoCombustible; // "nafta" o "gasoil"
 
-    public Auto(String marca, String modelo, double kmRecorridosAnual,
-                double consumoLitrosPor100km, String tipoCombustible) {
+    public Auto(String marca, String modelo, double kmRecorridosAnual, double consumoLitrosPor100km,
+            String tipoCombustible) {
         this.marca = marca;
         this.modelo = modelo;
         this.kmRecorridosAnual = kmRecorridosAnual;
@@ -42,8 +42,8 @@ public class Auto implements ImpactoEcologico {
 
     @Override
     public String toString() {
-        return String.format("Auto     %-15s | %.0f km/año, %.1f L/100km, %s",
-                marca + " " + modelo, kmRecorridosAnual, consumoLitrosPor100km, tipoCombustible);
+        return String.format("Auto     %-15s | %.0f km/año, %.1f L/100km, %s", marca + " " + modelo, kmRecorridosAnual,
+                consumoLitrosPor100km, tipoCombustible);
     }
 
     // Comportamiento propio de Auto, sin ninguna relación con la interfaz

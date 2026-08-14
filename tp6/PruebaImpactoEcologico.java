@@ -48,12 +48,10 @@ public class PruebaImpactoEcologico {
             // objeto es de tipo ImpactoEcologico (programación "en forma general"):
             // no sabemos ni nos importa si es un Edificio, un Auto o una Bicicleta.
             double impacto = objeto.obtenerImpactoEcologico();
-            System.out.printf("%s%n   -> Impacto ecológico: %.2f kg de CO2e / año%n%n",
-                    objeto, impacto);
+            System.out.printf("%s%n   -> Impacto ecológico: %.2f kg de CO2e / año%n%n", objeto, impacto);
             impactoTotal += impacto;
         }
 
-        System.out.printf("Impacto ecológico TOTAL de la flota/parque: %.2f kg de CO2e / año%n",
-                impactoTotal);
+        System.out.printf("Impacto ecológico TOTAL de la flota/parque: %.2f kg de CO2e / año%n", impactoTotal);
     }
 }

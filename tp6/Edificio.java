@@ -6,13 +6,13 @@
 public class Edificio implements ImpactoEcologico {
 
     // Factores de emisión aproximados (kg de CO2 por unidad de consumo)
-    private static final double FACTOR_GAS_NATURAL = 2.75;  // kg CO2 por m3
+    private static final double FACTOR_GAS_NATURAL = 2.75; // kg CO2 por m3
     private static final double FACTOR_ELECTRICIDAD = 0.40; // kg CO2 por kWh
-    private static final double FACTOR_GASOIL = 2.52;       // kg CO2 por litro
+    private static final double FACTOR_GASOIL = 2.52; // kg CO2 por litro
 
     private String nombre;
     private String tipoCombustible; // "gas natural", "electricidad" o "gasoil"
-    private double consumoAnual;    // en la unidad correspondiente al combustible
+    private double consumoAnual; // en la unidad correspondiente al combustible
 
     public Edificio(String nombre, String tipoCombustible, double consumoAnual) {
         this.nombre = nombre;
@@ -49,8 +49,8 @@ public class Edificio implements ImpactoEcologico {
 
     @Override
     public String toString() {
-        return String.format("Edificio %-15s | combustible: %-12s | consumo anual: %.1f",
-                nombre, tipoCombustible, consumoAnual);
+        return String.format("Edificio %-15s | combustible: %-12s | consumo anual: %.1f", nombre, tipoCombustible,
+                consumoAnual);
     }
 
     // Comportamiento propio de Edificio, sin ninguna relación con la interfaz

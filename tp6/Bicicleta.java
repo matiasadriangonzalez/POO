@@ -48,8 +48,7 @@ public class Bicicleta implements ImpactoEcologico {
 
     @Override
     public String toString() {
-        return String.format("Bicicleta %-14s | cuadro de %s, vida útil %d años",
-                marca, materialCuadro, vidaUtilAnios);
+        return String.format("Bicicleta %-14s | cuadro de %s, vida útil %d años", marca, materialCuadro, vidaUtilAnios);
     }
 
     // Comportamiento propio de Bicicleta, sin ninguna relación con la interfaz
