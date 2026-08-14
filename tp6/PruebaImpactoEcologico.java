@@ -15,7 +15,7 @@ public class PruebaImpactoEcologico {
         // no con el tipo de la interfaz, para poder invocar el comportamiento
         // propio de cada una -encenderCalefaccion(), acelerar(), pedalear()-
         // que NO forma parte de ImpactoEcologico y por lo tanto no podría
-        // invocarse a través de una variable de ese tipo (ver Ejercicio 2, TP6).
+        // invocarse a través de una variable de ese tipo.
         Edificio oficina = new Edificio("Oficina Central", "electricidad", 45000);
         Edificio deposito = new Edificio("Depósito Norte", "gas natural", 3200);
         Auto corolla = new Auto("Toyota", "Corolla", 15000, 7.5, "nafta");
