@@ -3,4 +3,3 @@ class Producto:
         self.nombre = nombre
         self.precio_base = precio_base
         self.porcentaje_iva = porcentaje_iva
-        

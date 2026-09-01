@@ -1,7 +1,6 @@
 class Factura:
-    def __init__(self, tipo_comprobante, porcentaje_descuento, lineas):
+    def __init__(self, tipo_comprobante, lineas):
         self.tipo_comprobante = tipo_comprobante
-        self.porcentaje_descuento = porcentaje_descuento
         self.lineas = lineas
 
     def calcular_total_neto(self):
