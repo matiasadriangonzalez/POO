@@ -6,8 +6,8 @@ class Factura:
     def imprimir_factura(self):
         total_neto = 0.0
         for linea in self.lineas:
-            # Factura ya NO calcula: solo le pregunta a su colaborador directo (linea)
-            # La palabra "producto" no aparece en ningun lado de este archivo
-            neto_linea = linea.calcular_subtotal_neto_con_descuento()
+            # Factura TODAVIA calcula ella misma (esto se corrige en el Punto 2)
+            # pero ya usa el precio HISTORICO, no el vivo del producto
+            neto_linea = linea.cantidad * linea.precio_unitario_historico
             total_neto += neto_linea
         print(f"Total Neto: ${total_neto}")

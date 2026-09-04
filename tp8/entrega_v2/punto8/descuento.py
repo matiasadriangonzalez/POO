@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 # GRASP Polimorfismo: cada tipo de promocion es su PROPIA clase.
-# Ya no hay ningun "if" preguntando que tipo de descuento es.
 class Descuento(ABC):
     @abstractmethod
     def aplicar(self, monto_base: float, cantidad: int = 1) -> float:

@@ -17,4 +17,4 @@ if __name__ == "__main__":
     factura.imprimir_factura()
 
     print("\n=== Verificacion Ley de Demeter ===")
-    print("Subtotal calculado directamente por la linea:", linea.calcular_subtotal_neto_con_descuento())
+    print("Subtotal calculado directamente por la linea:", linea.calcular_subtotal())

@@ -5,7 +5,10 @@ class LineaFactura:
         self.precio_unitario_historico = producto.precio_base
         self.porcentaje_iva_historico = producto.porcentaje_iva
 
-    # SOLUCION PUNTO 2 (Experto en Informacion + Ley de Demeter):
-    # el calculo vive ACA, no en Factura. LineaFactura usa solo SUS propios atributos.
-    def calcular_subtotal_neto_con_descuento(self):
+    def calcular_subtotal(self):
         return self.cantidad * self.precio_unitario_historico
+
+    # NUEVO en el Punto 4: ahora que se necesita mostrar el IVA por separado,
+    # se agrega el calculo de IVA. Todavia SIN descuento (nombre honesto: calcular_iva)
+    def calcular_iva(self):
+        return self.calcular_subtotal() * self.porcentaje_iva_historico

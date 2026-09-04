@@ -5,8 +5,7 @@ class LineaFactura:
         self.precio_unitario_historico = producto.precio_base
         self.porcentaje_iva_historico = producto.porcentaje_iva
 
-    def calcular_subtotal_neto_con_descuento(self):
+    # SOLUCION PUNTO 2 (Experto en Informacion + Ley de Demeter):
+    # Nombre HONESTO: todavia no hay descuento, asi que se llama simplemente "calcular_subtotal"
+    def calcular_subtotal(self):
         return self.cantidad * self.precio_unitario_historico
-
-    def calcular_monto_iva(self):
-        return self.calcular_subtotal_neto_con_descuento() * self.porcentaje_iva_historico
