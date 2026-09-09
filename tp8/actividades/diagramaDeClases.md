@@ -2,10 +2,7 @@
 classDiagram
     class TerminalPOS {
         -catalogo_productos: CatalogoProductos
-        -impresor: ImpresorFacturaConsola
-        +iniciar_venta(tipo_comprobante) Factura
-        +registrar_item(factura, codigo_producto, cantidad, descuento_producto, descuento_cliente) None
-        +finalizar_venta(factura) None
+        +emitir_factura(tipo_comprobante, items) Factura
     }
 
     class CatalogoProductos {
@@ -75,7 +72,6 @@ classDiagram
 
     TerminalPOS "1" --> "1" CatalogoProductos : usa
     TerminalPOS ..> Factura : crea
-    TerminalPOS ..> ImpresorFacturaConsola : usa
     CatalogoProductos "1" o-- "*" Producto : gestiona y crea
     Factura "1" o-- "*" LineaFactura : contiene y crea
     LineaFactura "*" --> "1" Producto : refiere a
