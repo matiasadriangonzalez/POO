@@ -15,10 +15,4 @@ if __name__ == "__main__":
     impresor = ImpresorFacturaConsola()
     impresor.imprimir(factura)
 
-    print("\n--- Verificacion matematica (exige la impresora de ARCA) ---")
-    neto = factura.calcular_total_neto()
-    iva = factura.calcular_total_iva()
-    total = factura.calcular_total_final()
-    print(f"Neto + IVA = {neto:.2f} + {iva:.2f} = {neto + iva:.2f}")
-    print(f"Total Final = {total:.2f}")
-    print("Coinciden exactamente:", round(neto + iva, 2) == round(total, 2))
+

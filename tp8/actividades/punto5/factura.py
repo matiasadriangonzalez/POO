@@ -9,12 +9,12 @@ class Factura:
     def calcular_total_iva(self):
         return sum(linea.calcular_monto_iva() for linea in self.lineas)
 
-    # NUEVO en el Punto 5: filtro por tasa, para cumplir con ARCA
-    def calcular_total_iva_por_tasa(self, tasa):
+    
+    def calcular_total_iva_por_tasa(self, tasa): # filtro por tasa
         return sum(
             linea.calcular_monto_iva()
             for linea in self.lineas
-            if linea.porcentaje_iva_historico == tasa
+            if linea.porcentaje_iva_historico == tasa 
         )
 
     def calcular_total_final(self):
