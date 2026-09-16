@@ -73,7 +73,7 @@ classDiagram
     TerminalPOS "1" --> "1" CatalogoProductos : usa
     TerminalPOS ..> Factura : crea
     CatalogoProductos "1" o-- "*" Producto : gestiona y crea
-    Factura "1" o-- "*" LineaFactura : contiene y crea
+    Factura "1" *-- "*" LineaFactura : contiene y crea
     LineaFactura "*" --> "1" Producto : refiere a
     LineaFactura "1" --> "2" Descuento : usa
     ImpresorFacturaConsola ..> Factura : usa
