@@ -460,7 +460,7 @@ classDiagram
 | `EntradaYaUtilizada` | HU3 E2 | `Entrada.registrar_ingreso`, `EntradaRepository.registrar_ingreso` | Entrada ya utilizada | 409 |
 | `EventoNoCorrespondeAlDia` | HU3 (decisión de diseño) | `Entrada.registrar_ingreso` | La entrada no corresponde al evento del día | 400 |
 
-Los mensajes de `CantidadInvalida` y `CapacidadInsuficiente` son más cortos que los del enunciado ("La cantidad de entradas solicitadas debe ser mayor a cero" y "Capacidad insuficiente o entradas no disponibles"), que además difieren entre la sección 3 y el prompt de la sección 6. Hay que confirmar con el docente cuál usar. La validación de "evento del día" no figura entre los escenarios del enunciado: se agregó por decisión de diseño.
+Los mensajes de `CantidadInvalida` y `CapacidadInsuficiente` son los de la sección 6 del enunciado ("Cantidad inválida" y "Capacidad insuficiente"). La validación de "evento del día" no figura entre los escenarios del enunciado: se agregó por decisión de diseño.
 
 ## Dónde se aplica GRASP y SOLID
 

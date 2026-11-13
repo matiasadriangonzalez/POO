@@ -62,7 +62,7 @@ sequenceDiagram
 - El subtotal lo calcula `PrecioSector`, que es quien conoce el precio (Information Expert). `Evento.precio_de()` lo busca entre los precios del evento.
 - La cotización **no reserva ni modifica** las entradas: solo las identifica. La reserva ocurre al pagar (HU2).
 - Los errores son excepciones de dominio. `ManejadorExcepciones` las traduce a HTTP.
-- El mensaje del enunciado para estos errores es más largo ("La cantidad de entradas solicitadas debe ser mayor a cero" y "Capacidad insuficiente o entradas no disponibles"). El código usa los textos cortos que se ven en el diagrama; falta confirmar con el docente cuál usar.
+- Los mensajes de error son los de la sección 6 del enunciado ("Cantidad inválida" y "Capacidad insuficiente"), los mismos que se ven en el diagrama.
 
 ## Prerrequisito: alta del evento
 
