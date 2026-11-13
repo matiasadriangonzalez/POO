@@ -17,7 +17,7 @@ sequenceDiagram
     Note over Router,Pasarela: get_pasarela (Depends) entrega la PasarelaPago al servicio
     Router->>Servicio: iniciar_pago(cliente_id, entrada_ids, DatosTarjeta)
     Servicio->>RepoC: buscar_por_id(cliente_id)
-    RepoC-->>Servicio: Optional~Cliente~
+    RepoC-->>Servicio: Optional[Cliente]
 
     alt el cliente no existe
         Servicio--)Router: ClienteNoEncontrado

@@ -11,6 +11,11 @@ class LugarNoEncontrado(ErrorDeDominio):
         super().__init__("Lugar no encontrado")
 
 
+class SectorNoEncontrado(ErrorDeDominio):
+    def __init__(self):
+        super().__init__("Sector no encontrado")
+
+
 class EventoNoEncontrado(ErrorDeDominio):
     def __init__(self):
         super().__init__("Evento no encontrado")

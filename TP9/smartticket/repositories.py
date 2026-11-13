@@ -4,17 +4,37 @@ from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from excepciones import EntradaNoDisponible, EntradaYaUtilizada
-from models import Cliente, Entrada, EstadoEntrada, Evento, Lugar, Venta
+from models import Cliente, Entrada, EstadoEntrada, Evento, Lugar, Sector, Venta
 
 
 class LugarRepository(ABC):
     @abstractmethod
     def buscar_por_id(self, lugar_id: int) -> Lugar | None: ...
 
+    @abstractmethod
+    def listar(self) -> list[Lugar]: ...
+
+    @abstractmethod
+    def guardar(self, lugar: Lugar) -> Lugar: ...
+
+
+class SectorRepository(ABC):
+    @abstractmethod
+    def buscar_por_id(self, sector_id: int) -> Sector | None: ...
+
+    @abstractmethod
+    def listar(self) -> list[Sector]: ...
+
+    @abstractmethod
+    def guardar(self, sector: Sector) -> Sector: ...
+
 
 class EventoRepository(ABC):
     @abstractmethod
     def buscar_por_id(self, evento_id: int) -> Evento | None: ...
+
+    @abstractmethod
+    def listar(self) -> list[Evento]: ...
 
     @abstractmethod
     def guardar(self, evento: Evento) -> Evento: ...
@@ -58,6 +78,12 @@ class ClienteRepository(ABC):
     @abstractmethod
     def buscar_por_id(self, cliente_id: int) -> Cliente | None: ...
 
+    @abstractmethod
+    def listar(self) -> list[Cliente]: ...
+
+    @abstractmethod
+    def guardar(self, cliente: Cliente) -> Cliente: ...
+
 
 class VentaRepository(ABC):
     @abstractmethod
@@ -71,6 +97,32 @@ class LugarRepositorySQL(LugarRepository):
     def buscar_por_id(self, lugar_id: int) -> Lugar | None:
         return self._db.get(Lugar, lugar_id)
 
+    def listar(self) -> list[Lugar]:
+        return self._db.query(Lugar).all()
+
+    def guardar(self, lugar: Lugar) -> Lugar:
+        self._db.add(lugar)
+        self._db.commit()
+        self._db.refresh(lugar)
+        return lugar
+
+
+class SectorRepositorySQL(SectorRepository):
+    def __init__(self, db: Session):
+        self._db = db
+
+    def buscar_por_id(self, sector_id: int) -> Sector | None:
+        return self._db.get(Sector, sector_id)
+
+    def listar(self) -> list[Sector]:
+        return self._db.query(Sector).all()
+
+    def guardar(self, sector: Sector) -> Sector:
+        self._db.add(sector)
+        self._db.commit()
+        self._db.refresh(sector)
+        return sector
+
 
 class EventoRepositorySQL(EventoRepository):
     def __init__(self, db: Session):
@@ -78,6 +130,9 @@ class EventoRepositorySQL(EventoRepository):
 
     def buscar_por_id(self, evento_id: int) -> Evento | None:
         return self._db.get(Evento, evento_id)
+
+    def listar(self) -> list[Evento]:
+        return self._db.query(Evento).all()
 
     def guardar(self, evento: Evento) -> Evento:
         self._db.add(evento)
@@ -156,6 +211,15 @@ class ClienteRepositorySQL(ClienteRepository):
 
     def buscar_por_id(self, cliente_id: int) -> Cliente | None:
         return self._db.get(Cliente, cliente_id)
+
+    def listar(self) -> list[Cliente]:
+        return self._db.query(Cliente).all()
+
+    def guardar(self, cliente: Cliente) -> Cliente:
+        self._db.add(cliente)
+        self._db.commit()
+        self._db.refresh(cliente)
+        return cliente
 
 
 class VentaRepositorySQL(VentaRepository):

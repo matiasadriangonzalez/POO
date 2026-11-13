@@ -14,6 +14,7 @@ from excepciones import (
     LugarNoEncontrado,
     PagoDenegado,
     PreciosInvalidos,
+    SectorNoEncontrado,
     SectorNoEncontradoEnEvento,
     TicketInvalido,
     TicketNoEmitido,
@@ -23,6 +24,7 @@ from excepciones import (
 CODIGO_HTTP = {
     LugarNoEncontrado: 404,
     EventoNoEncontrado: 404,
+    SectorNoEncontrado: 404,
     SectorNoEncontradoEnEvento: 404,
     PreciosInvalidos: 400,
     CantidadInvalida: 400,

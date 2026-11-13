@@ -14,7 +14,7 @@ sequenceDiagram
     Note over Router,Servicio: get_reloj (Depends) entrega el reloj al servicio
     Router->>Servicio: escanear_acceso(codigo_qr)
     Servicio->>Repo: buscar_por_codigo_qr(codigo_qr)
-    Repo-->>Servicio: Optional~Entrada~
+    Repo-->>Servicio: Optional[Entrada]
 
     alt Escenario 3: no existe
         Servicio--)Router: TicketInvalido

@@ -20,7 +20,7 @@ class LugarRead(LugarCreate):
 class SectorCreate(BaseModel):
     lugar_id: int
     nombre: str
-    capacidad_maxima: int
+    capacidad_maxima: int = Field(gt=0)
 
 
 class SectorRead(SectorCreate):

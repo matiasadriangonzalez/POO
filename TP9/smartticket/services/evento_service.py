@@ -1,7 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 
-from excepciones import LugarNoEncontrado, PreciosInvalidos
+from excepciones import EventoNoEncontrado, LugarNoEncontrado, PreciosInvalidos
 from models import Evento, PrecioSector
 from repositories import EventoRepository, LugarRepository
 
@@ -32,3 +32,12 @@ class EventoService:
             evento.precios.append(PrecioSector(sector=sectores[sector_id], precio=precio))
         evento.generar_entradas()
         return self._eventos.guardar(evento)
+
+    def listar_eventos(self) -> list[Evento]:
+        return self._eventos.listar()
+
+    def obtener_evento(self, evento_id: int) -> Evento:
+        evento = self._eventos.buscar_por_id(evento_id)
+        if evento is None:
+            raise EventoNoEncontrado()
+        return evento

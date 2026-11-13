@@ -20,7 +20,7 @@ sequenceDiagram
         Manejador-->>Espectador: 400 "Cantidad inválida"
     else cantidad valida
         Servicio->>ErepE: buscar_por_id(evento_id)
-        ErepE-->>Servicio: Optional~Evento~
+        ErepE-->>Servicio: Optional[Evento]
 
         alt el evento no existe
             Servicio--)Router: EventoNoEncontrado
@@ -81,7 +81,7 @@ sequenceDiagram
     Organizador->>Router: POST /eventos (lugar_id, nombre, fecha, precios)
     Router->>Servicio: crear_evento(lugar_id, nombre, fecha, precios)
     Servicio->>RepoL: buscar_por_id(lugar_id)
-    RepoL-->>Servicio: Optional~Lugar~
+    RepoL-->>Servicio: Optional[Lugar]
 
     alt el lugar no existe
         Servicio--)Router: LugarNoEncontrado

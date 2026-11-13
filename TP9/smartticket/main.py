@@ -3,7 +3,7 @@ from fastapi import FastAPI
 import models  # noqa: F401  (registra las tablas en Base.metadata)
 from database import Base, engine
 import manejador_excepciones
-from routers import acceso, cliente, cotizacion, evento, lugar, pago, sector
+from routers import acceso, cliente, cotizacion, evento, lugar, pago, sector, webhook
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,3 +22,4 @@ app.include_router(cliente.router)
 app.include_router(cotizacion.router)
 app.include_router(pago.router)
 app.include_router(acceso.router)
+app.include_router(webhook.router)

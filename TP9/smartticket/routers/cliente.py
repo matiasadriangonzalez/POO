@@ -1,30 +1,28 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from database import get_db
-from models import Cliente
+from repositories import ClienteRepositorySQL
 from schemas import ClienteCreate, ClienteRead
+from services.cliente_service import ClienteService
 
 router = APIRouter(prefix="/clientes", tags=["Clientes"])
 
 
+def get_cliente_service(db: Session = Depends(get_db)) -> ClienteService:
+    return ClienteService(ClienteRepositorySQL(db))
+
+
 @router.post("", response_model=ClienteRead, status_code=201, summary="Crear un cliente")
-def crear_cliente(datos: ClienteCreate, db: Session = Depends(get_db)):
-    cliente = Cliente(**datos.model_dump())
-    db.add(cliente)
-    db.commit()
-    db.refresh(cliente)
-    return cliente
+def crear_cliente(datos: ClienteCreate, servicio: ClienteService = Depends(get_cliente_service)):
+    return servicio.crear_cliente(datos.nombre, datos.email)
 
 
 @router.get("", response_model=list[ClienteRead], summary="Listar todos los clientes")
-def listar_clientes(db: Session = Depends(get_db)):
-    return db.query(Cliente).all()
+def listar_clientes(servicio: ClienteService = Depends(get_cliente_service)):
+    return servicio.listar_clientes()
 
 
 @router.get("/{cliente_id}", response_model=ClienteRead, summary="Buscar un cliente por ID")
-def obtener_cliente(cliente_id: int, db: Session = Depends(get_db)):
-    cliente = db.get(Cliente, cliente_id)
-    if cliente is None:
-        raise HTTPException(status_code=404, detail="Cliente no encontrado")
-    return cliente
+def obtener_cliente(cliente_id: int, servicio: ClienteService = Depends(get_cliente_service)):
+    return servicio.obtener_cliente(cliente_id)
