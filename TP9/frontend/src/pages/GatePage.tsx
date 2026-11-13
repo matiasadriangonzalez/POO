@@ -7,8 +7,14 @@ import type { Acceso, EntradaPago } from '../types'
 
 type ScanResult = { ok: true; acceso: Acceso } | { ok: false; message: string }
 
-export function GatePage({ lastPurchase }: { lastPurchase: EntradaPago[] }) {
-  const [codigo, setCodigo] = useState('')
+interface Props {
+  lastPurchase: EntradaPago[]
+  /** QR to leave in the input, ready to scan (not scanned automatically). */
+  initialCode?: string
+}
+
+export function GatePage({ lastPurchase, initialCode = '' }: Props) {
+  const [codigo, setCodigo] = useState(initialCode)
   const [result, setResult] = useState<ScanResult | null>(null)
   const [busy, setBusy] = useState(false)
 

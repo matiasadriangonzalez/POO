@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { useLastPurchase } from './hooks/useLastPurchase'
+import { useScenarioRunner } from './hooks/useScenarioRunner'
 import { ConfigPage } from './pages/ConfigPage'
 import { GatePage } from './pages/GatePage'
 import { GuidePage } from './pages/GuidePage'
@@ -9,11 +10,24 @@ import { TABS, type TabId } from './tabs'
 export default function App() {
   const [tab, setTab] = useState<TabId>('guia')
   const lastPurchase = useLastPurchase()
+  // A new `nonce` remounts the gate page so the prefilled QR applies even when the code repeats.
+  const [gatePrefill, setGatePrefill] = useState<{ code: string; nonce: number }>({ code: '', nonce: 0 })
+  const runner = useScenarioRunner((_, result) => {
+    if (result.qrs.length > 0) lastPurchase.save(result.qrs)
+  })
 
   const navigate = useCallback((next: TabId) => {
     setTab(next)
     window.scrollTo({ top: 0 })
   }, [])
+
+  const openGate = useCallback(
+    (code: string) => {
+      setGatePrefill((prev) => ({ code, nonce: prev.nonce + 1 }))
+      navigate('puerta')
+    },
+    [navigate],
+  )
 
   return (
     <>
@@ -47,10 +61,10 @@ export default function App() {
         </div>
       </header>
       <main id="main" role="tabpanel" aria-labelledby={`tab-${tab}`}>
-        {tab === 'guia' && <GuidePage onNavigate={navigate} />}
+        {tab === 'guia' && <GuidePage runner={runner} onOpenGate={openGate} />}
         {tab === 'config' && <ConfigPage />}
         {tab === 'comprar' && <PurchasePage onPurchased={lastPurchase.save} onNavigate={navigate} />}
-        {tab === 'puerta' && <GatePage lastPurchase={lastPurchase.entradas} />}
+        {tab === 'puerta' && <GatePage key={gatePrefill.nonce} initialCode={gatePrefill.code} lastPurchase={lastPurchase.entradas} />}
       </main>
     </>
   )
